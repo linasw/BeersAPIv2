@@ -1,0 +1,13 @@
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.csproj.CoreCompileInputs.cache
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.RazorAssemblyInfo.cache
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.RazorAssemblyInfo.cs
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.AssemblyInfoInputs.cache
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.AssemblyInfo.cs
+D:\Projects\BE\BeersApi\BeersApi\bin\Debug\netcoreapp2.2\BeersApi.deps.json
+D:\Projects\BE\BeersApi\BeersApi\bin\Debug\netcoreapp2.2\BeersApi.runtimeconfig.json
+D:\Projects\BE\BeersApi\BeersApi\bin\Debug\netcoreapp2.2\BeersApi.runtimeconfig.dev.json
+D:\Projects\BE\BeersApi\BeersApi\bin\Debug\netcoreapp2.2\BeersApi.dll
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.RazorTargetAssemblyInfo.cache
+D:\Projects\BE\BeersApi\BeersApi\bin\Debug\netcoreapp2.2\BeersApi.pdb
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.dll
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.pdb
