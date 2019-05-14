@@ -11,3 +11,4 @@ D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.RazorTargetAss
 D:\Projects\BE\BeersApi\BeersApi\bin\Debug\netcoreapp2.2\BeersApi.pdb
 D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.dll
 D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.pdb
+D:\Projects\BE\BeersApi\BeersApi\obj\Debug\netcoreapp2.2\BeersApi.csprojAssemblyReference.cache

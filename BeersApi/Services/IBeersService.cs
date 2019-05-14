@@ -1,7 +1,7 @@
-﻿using System;
+﻿using BeersApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BeersApi.Models;
 
 namespace BeersApi.Services
 {

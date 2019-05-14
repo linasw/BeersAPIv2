@@ -1,0 +1,6 @@
+
+docker image build -t beersapi .
+
+docker run -p 8000:80 --name api beersapi
+
+docker run --rm -p 8000:80 kasparasgec/test

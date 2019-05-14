@@ -1,12 +1,11 @@
-﻿using System;
+﻿using BeersApi.DTOs;
+using BeersApi.Models;
+using BeersApi.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BeersApi.DTOs;
-using BeersApi.Models;
-using BeersApi.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BeersApi.Controllers
 {
@@ -39,6 +38,32 @@ namespace BeersApi.Controllers
 
                 return new OkObjectResult(data);
 
+            }
+
+            return NoContent();
+        }
+
+        // GET: api/Beers/1
+        [HttpGet("{beerId}")]
+        public async Task<IActionResult> GetBeerById(string beerId)
+        {
+            if (Guid.TryParse(beerId, out Guid id))
+            {
+                Beer beer = await _beersService.Get(id);
+
+                if (beer != null)
+                {
+                    var data = new BeerDto
+                    {
+                        BeerId = beer.Id,
+                        Title = beer.Title,
+                        Volume = beer.Volume,
+                        NonAlcohol = beer.NonAlcohol
+                    };
+
+                    return new OkObjectResult(data);
+
+                }
             }
 
             return NoContent();

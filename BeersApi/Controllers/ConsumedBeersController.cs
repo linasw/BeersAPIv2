@@ -1,12 +1,11 @@
-﻿using System;
+﻿using BeersApi.DTOs;
+using BeersApi.Models;
+using BeersApi.Services;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BeersApi.DTOs;
-using BeersApi.Models;
-using BeersApi.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace BeersApi.Controllers
 {
@@ -54,6 +53,35 @@ namespace BeersApi.Controllers
             return NoContent();
         }
 
+        // GET: api/ConsumedBeers/1
+        [HttpGet("{consumptionId}")]
+        public async Task<IActionResult> GetConsumptionById(string consumptionId)
+        {
+            if (Guid.TryParse(consumptionId, out Guid consumeId))
+            {
+                ConsumedBeer consumed = await _consumedBeersService.Get(consumeId);
+
+                if (consumed != null)
+                {
+                    Beer beer = await _beersService.Get(consumed.BeerId);
+
+                    var data = new ConsumedBeersDto
+                    {
+                        Id = consumed.Id,
+                        BeerId = consumed.BeerId,
+                        Title = beer.Title,
+                        NonAlcohol = beer.NonAlcohol,
+                        Quantity = consumed.Quantity,
+                        Volume = beer.Volume
+                    };
+
+                    return new OkObjectResult(data);
+                }
+            }
+
+            return NoContent();
+        }
+
         // POST: api/ConsumedBeers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateConsumeBeerDto add)
@@ -81,8 +109,38 @@ namespace BeersApi.Controllers
         }
 
         // PUT: api/ConsumedBeers/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateQuantity(string id, [FromBody] CreateConsumeBeerDto update)
+        {
+            if (Guid.TryParse(id, out Guid consumeId) && update != null)
+            {
+                var consumed = await _consumedBeersService.Get(consumeId);
+
+                if (consumed != null && update.BeerId?.ToLower() == consumed.BeerId.ToString().ToLower())
+                {
+                    consumed.Quantity = update.Quantity;
+                    bool updated = await _consumedBeersService.Update(consumed);
+                    return new OkObjectResult(updated);
+                }
+                else if (Guid.TryParse(update.BeerId, out Guid beerId))
+                {
+                    consumed = new ConsumedBeer();
+
+                    consumed.Id = Guid.NewGuid();
+                    consumed.BeerId = beerId;
+                    consumed.Quantity = update.Quantity;
+
+                    bool updated = await _consumedBeersService.Update(consumed);
+                    return new OkObjectResult(updated);
+                }
+            }
+
+            return new OkObjectResult(false);
+        }
+
+        // PUT: api/ConsumedBeers/5/increase
         [HttpPut("{id}/increase")]
-        public async Task<IActionResult> Put(string id)
+        public async Task<IActionResult> IncreaseQuantity(string id)
         {
             if (Guid.TryParse(id, out Guid consumeId))
             {
