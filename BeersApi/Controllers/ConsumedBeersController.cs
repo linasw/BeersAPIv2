@@ -27,26 +27,12 @@ namespace BeersApi.Controllers
         public async Task<IActionResult> GetAllConsumedBeers()
         {
             Task<IEnumerable<ConsumedBeer>> taskConsumed = _consumedBeersService.GetConsumedBeers();
-            Task<IEnumerable<Beer>> taskBeers = _beersService.GetAll();
 
             var consumed = await taskConsumed;
-            var beers = await taskBeers;
 
             if (consumed != null)
             {
-                var joinedData = (from con in consumed
-                                  join b in beers on con.BeerId equals b.Id
-                                  select new ConsumedBeersDto
-                                  {
-                                      Id = con.Id,
-                                      BeerId = con.BeerId,
-                                      Title = b.Title,
-                                      NonAlcohol = b.NonAlcohol,
-                                      Quantity = con.Quantity,
-                                      Volume = b.Volume
-                                  });
-
-                return new OkObjectResult(joinedData);
+                return new OkObjectResult(consumed);
 
             }
 
@@ -63,19 +49,8 @@ namespace BeersApi.Controllers
 
                 if (consumed != null)
                 {
-                    Beer beer = await _beersService.Get(consumed.BeerId);
 
-                    var data = new ConsumedBeersDto
-                    {
-                        Id = consumed.Id,
-                        BeerId = consumed.BeerId,
-                        Title = beer.Title,
-                        NonAlcohol = beer.NonAlcohol,
-                        Quantity = consumed.Quantity,
-                        Volume = beer.Volume
-                    };
-
-                    return new OkObjectResult(data);
+                    return new OkObjectResult(consumed);
                 }
             }
 

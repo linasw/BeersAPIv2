@@ -20,6 +20,12 @@ namespace BeersApi.Services
                     Id = Guid.Parse("492dda3f-51b6-48e8-b7d2-6a3254c70cd3"),
                     BeerId = Guid.Parse("01b23196-b955-4c3d-9e28-5c89dcea2cc0"),
                     Quantity = 2
+                },
+                new ConsumedBeer
+                {
+                    Id = Guid.Parse("40f18fba-9470-429c-8e8a-fb81f814050c"),
+                    BeerId = Guid.Parse("f4881074-d451-4657-bf82-8cf0935d5a6c"),
+                    Quantity = 2
                 }
             };
         }

@@ -23,6 +23,7 @@ namespace BeersApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped<IBeersService, BeersService>();
             services.AddScoped<IConsumedBeersService, ConsumedBeersService>();
+            services.AddScoped<IBeerTypeService, BeerTypeService>();
 
             services.AddSwaggerGen(swagger =>
             {

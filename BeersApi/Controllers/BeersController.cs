@@ -31,6 +31,7 @@ namespace BeersApi.Controllers
                 var data = beers.Select(item => new BeerDto
                 {
                     BeerId = item.Id,
+                    TypeId = item.TypeId,
                     Title = item.Title,
                     Volume = item.Volume,
                     NonAlcohol = item.NonAlcohol
@@ -56,6 +57,7 @@ namespace BeersApi.Controllers
                     var data = new BeerDto
                     {
                         BeerId = beer.Id,
+                        TypeId = beer.TypeId,
                         Title = beer.Title,
                         Volume = beer.Volume,
                         NonAlcohol = beer.NonAlcohol
@@ -78,6 +80,7 @@ namespace BeersApi.Controllers
                 var beer = new Beer
                 {
                     Id = Guid.NewGuid(),
+                    TypeId = add.TypeId,
                     Title = add.Title,
                     NonAlcohol = add.NonAlcohol,
                     Volume = add.Volume
@@ -101,6 +104,7 @@ namespace BeersApi.Controllers
                 if (beer != null)
                 {
                     beer.Title = update.Title;
+                    beer.TypeId = update.TypeId;
                     beer.NonAlcohol = update.NonAlcohol;
                     beer.Volume = update.Volume;
 
@@ -113,6 +117,7 @@ namespace BeersApi.Controllers
                     beer = new Beer();
 
                     beer.Id = Guid.NewGuid();
+                    beer.TypeId = update.TypeId;
                     beer.Title = update.Title;
                     beer.NonAlcohol = update.NonAlcohol;
                     beer.Volume = update.Volume;
